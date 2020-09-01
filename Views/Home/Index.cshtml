@@ -1,0 +1,47 @@
+﻿@model IEnumerable<Album>
+@{
+    ViewData["Title"] = "Home Page";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<link rel="stylesheet" type="text/css" href="/css/app/App.css" />
+<link href="~/lib/bootstrap/dist/css/grid.css" rel="stylesheet" />
+
+<header>
+    <div class="text-center">
+        <h1 class="display-4">Welcome To Music Hub!</h1>
+        <h2 class="subtitle">We got you covered on everything about music!</h2>
+    </div>
+</header>
+
+<body>
+    <div class="row m-1 p-1">
+        <div id="categories" class="col-3">
+            @await Component.InvokeAsync("NavigationMenu")
+        </div>
+    </div>
+    @foreach (var a in Model)
+    {
+        <div class="container">
+            <div class="col span-1-of-3">
+                <div class="caption">
+                    <h3>
+                        <div class="Album-Title"> <a asp-controller="StoreManager" asp-action="Details" asp-route-id="@a.Id"> @a.Title</a></div>
+                    </h3>
+                    <div class="Album">
+                        <div class="img-thumbnail">
+                            <img src="@a.ImageUrl">
+                            <div class="pull-right">
+                                <h4>@a.Price.ToString("C")</h4>
+                            </div>
+                            <div class="align-content-center">
+                                @Html.Partial("AddToCart", a)
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    }
+
+</body>
+

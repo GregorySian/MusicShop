@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+This file is used by the publish/package process of your Web project. You can customize the behavior of this process
+by editing this MSBuild file. In order to learn more about this please visit https://go.microsoft.com/fwlink/?LinkID=208121. 
+-->
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <TimeStampOfAssociatedLegacyPublishXmlFile />
+    <EncryptedPassword>AQAAANCMnd8BFdERjHoAwE/Cl+sBAAAAtNxT/U5xsk+QcoLRLNNKlAAAAAACAAAAAAAQZgAAAAEAACAAAAABFqOzYYYAaVxB80bt2u5eOUKmS8wM5e57Cy6H8ySgvwAAAAAOgAAAAAIAACAAAAAGI839mNuQAdrbzUaPKI0I3XpVxASseVyaHj3ZEBv+3oAAAADiz9kx1HHlGTVGdJAhTc2EK4h/SwTg7fuwIziKhC+T/w08362g7zOroX9gvS6rqAX4nmDx0ktNcSKwYv0pdZYz2G/xLoXXd20z9U69PSHZnUce8X8FplGWx6xMJj8tcXzUQuj+I8G9926gb0L4sBEGeJZqnPgsyUdeCuP280kDnkAAAACyW7TOkVnBsV/sUlSJPRJT7boVRnCrxzgoGnuDB6uy6kVqpM0V8Ws8aa+HW2/LjDFhgdApel4VjCXjeF84CK8P</EncryptedPassword>
+  </PropertyGroup>
+  <ItemGroup>
+    <DestinationConnectionStrings Include="DefaultConnection">
+      <Value>Data Source=tcp:musichubdbserver.database.windows.net,1433%3bInitial Catalog=MusicHub_db%3bUser Id=GregSian%40musichubdbserver%3bPassword=Gregory96</Value>
+    </DestinationConnectionStrings>
+  </ItemGroup>
+</Project>
