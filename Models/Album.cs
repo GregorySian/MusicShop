@@ -1,10 +1,5 @@
-﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel.DataAnnotations;
+﻿using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
-using System.Linq;
-using System.Threading.Tasks;
-
 namespace MusicHub.Models
 {
     public class Album
@@ -16,9 +11,8 @@ namespace MusicHub.Models
 
             [Required]
             public string Artist { get; set; }
-            
-            [Required]
-            public string Genre { get; set; }
+
+             public string Genre { get; set; }
 
             public string Description { get; set; }
             
@@ -30,5 +24,5 @@ namespace MusicHub.Models
             [DataType(DataType.Currency)]
             [Column(TypeName = "decimal(18,2)")]
             public decimal Price { get; set; }
-        }
     }
+ }

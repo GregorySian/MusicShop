@@ -3,14 +3,17 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Net;
 using System.Threading.Tasks;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
 using MusicHub.Data;
 using MusicHub.Models;
+using MusicHub.ViewModels;
 
 namespace MusicHub.Controllers
 {
+    [Authorize(Roles = "Admin")]
     public class StoreManagerController : Controller
     {
         private readonly ApplicationDbContext _dbContext;
@@ -21,14 +24,27 @@ namespace MusicHub.Controllers
         }
 
         // GET: StoreManager
-        public async Task<IActionResult> Index(string searchString)
+        public async Task<IActionResult> Index(string searchString, string albumGenre)
         {
             var albums = from a in _dbContext.Albums select a;
+            var genreQuery = from a in _dbContext.Albums orderby a.Genre select a.Genre;
             if (!String.IsNullOrEmpty(searchString))
             {
                 albums = albums.Where(a => a.Title.Contains(searchString));
             }
-            return View(albums);
+
+            if (!string.IsNullOrEmpty(albumGenre))
+            {
+                albums = albums.Where(x => x.Genre == albumGenre);
+            }
+
+            var albumGenreVM = new AlbumGenreViewModel
+            {
+                Genres = new SelectList(await genreQuery.Distinct().ToListAsync()),
+                Albums = await albums.ToListAsync()
+            };
+
+            return View(albumGenreVM);
 
             
         }
@@ -94,7 +110,7 @@ namespace MusicHub.Controllers
         // more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(int id, [Bind("Id,Title,Artist,Genre,ImageUrl,Year,Price")] Album album)
+        public async Task<IActionResult> Edit(int id, [Bind("Id,Title,Artist,Genre,Description,ImageUrl,Year,Price")] Album album)
         {
             if (id != album.Id)
             {

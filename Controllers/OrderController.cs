@@ -2,6 +2,7 @@
 using MusicHub.Models.Order;
 using MusicHub.Models.Cart;
 using System.Linq;
+using Microsoft.AspNetCore.Authorization;
 
 namespace MusicHub.Controllers
 {
@@ -17,10 +18,13 @@ namespace MusicHub.Controllers
             cart = cartService;
         }
 
+        [Authorize]
         public ViewResult List()
             => View(repository.Orders.Where(o => !o.Shipped));
 
+
     [HttpPost]
+    [Authorize]
     public IActionResult MarkShipped(int OrderId)
         {
             Orders order = repository.Orders.FirstOrDefault(o => o.OrdersId == OrderId);

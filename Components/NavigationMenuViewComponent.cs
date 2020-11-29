@@ -15,6 +15,7 @@ namespace MusicHub.Components
         }
         public IViewComponentResult Invoke()
         {
+            ViewBag.SelectedGenre = RouteData?.Values["Genre"];
             return View(_repository.Albums
             .Select(x => x.Genre)
             .Distinct()

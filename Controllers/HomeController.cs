@@ -3,6 +3,8 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
 using MusicHub.Models;
 using MusicHub.Interfaces;
+using MusicHub.ViewModels;
+using System.Linq;
 
 namespace MusicHub.Controllers
 {
@@ -11,7 +13,7 @@ namespace MusicHub.Controllers
         private readonly IAlbumRepository _albumRepository;
         private readonly ILogger<HomeController> _logger;
         public int PageSize = 3;
-
+  
         public HomeController(ILogger<HomeController> logger, IAlbumRepository albumRepository)
         {
             _logger = logger;
@@ -38,21 +40,5 @@ namespace MusicHub.Controllers
         }
     }
 }
-
-
-        //    => View(new AlbumsListViewModel
-        //    {
-        //        Albums = _albumRepository.Albums
-        //            .OrderBy(a => a.Id)
-        //            .Skip((pageIndex - 1) * PageSize)
-        //            .Take(PageSize),
-        //         PaginationInfo = new PaginationInfoViewModel()
-        //        {
-        //            CurrentPage = pageIndex,
-        //            ItemsPerPage = itemsPage,
-        //            TotalItems = totalItems
-        //        }
-        //    });
-        //}
 
     

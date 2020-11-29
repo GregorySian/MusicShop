@@ -12,14 +12,17 @@ namespace MusicHub.ViewModels
         public int CurrentPage { get; set; }
         public string Next { get; set; }
         public string Previous { get; set; }
+        //public int TotalPages { get;set; }
 
 
-        public int TotalPages{
+        public int TotalPages
+        {
             get
             {
-                return (int)Math.Ceiling((decimal) TotalItems / ItemsPerPage);
+                return (int)Math.Ceiling((decimal)TotalItems / ItemsPerPage);
+
             }
-            
+
         }
     }
 }

@@ -4,18 +4,21 @@ using Microsoft.EntityFrameworkCore.Internal;
 using Microsoft.Extensions.DependencyInjection;
 using MusicHub.Data;
 using System.Linq;
-
+using MusicHub.Models;
+using System;
 
 namespace MusicHub.Models
 {
     public static class SeedData
     {
-        public static void EnsurePopulated(IApplicationBuilder app)
+        public static void EnsurePopulated(IServiceProvider serviceProvider)
         {
-            ApplicationDbContext context = app.ApplicationServices.GetRequiredService<ApplicationDbContext>();
-            context.Database.Migrate();
-            if (!context.Albums.Any())
+            ApplicationDbContext context = new ApplicationDbContext (serviceProvider.GetRequiredService<DbContextOptions<ApplicationDbContext>>());
+            { 
+            if (context.Albums.Any())
             {
+                return;
+            }
                 context.Albums.AddRange(
                     new Album
                     {
@@ -85,7 +88,7 @@ namespace MusicHub.Models
                          }
               );
                 context.SaveChanges();
-              }
             }
         }
     }
+}

@@ -1,7 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
+﻿using System.Linq;
 using MusicHub.Models;
 
 namespace MusicHub.ViewModels
@@ -11,5 +8,7 @@ namespace MusicHub.ViewModels
         public IQueryable<Album> Albums{ get; set; }
         public PaginationInfoViewModel PaginationInfo { get; set; }
         public string CurrentGenre { get; set; }
+
+
     }
 }

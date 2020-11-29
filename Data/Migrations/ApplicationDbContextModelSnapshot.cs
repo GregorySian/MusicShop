@@ -15,7 +15,7 @@ namespace MusicHub.Data.Migrations
         {
 #pragma warning disable 612, 618
             modelBuilder
-                .HasAnnotation("ProductVersion", "3.1.7")
+                .HasAnnotation("ProductVersion", "3.1.9")
                 .HasAnnotation("Relational:MaxIdentifierLength", 128)
                 .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
@@ -234,7 +234,6 @@ namespace MusicHub.Data.Migrations
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("Genre")
-                        .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<int?>("GenreId")
@@ -365,6 +364,29 @@ namespace MusicHub.Data.Migrations
                     b.ToTable("Orders");
                 });
 
+            modelBuilder.Entity("MusicHub.Models.Song", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int")
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+                    b.Property<int>("Duration")
+                        .HasColumnType("int");
+
+                    b.Property<int?>("NameId")
+                        .HasColumnType("int");
+
+                    b.Property<string>("Title")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("NameId");
+
+                    b.ToTable("Songs");
+                });
+
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityRoleClaim<string>", b =>
                 {
                     b.HasOne("Microsoft.AspNetCore.Identity.IdentityRole", null)
@@ -419,7 +441,7 @@ namespace MusicHub.Data.Migrations
             modelBuilder.Entity("MusicHub.Models.Album", b =>
                 {
                     b.HasOne("MusicHub.Models.Genre", null)
-                        .WithMany("Album")
+                        .WithMany("Albums")
                         .HasForeignKey("GenreId");
                 });
 
@@ -432,6 +454,13 @@ namespace MusicHub.Data.Migrations
                     b.HasOne("MusicHub.Models.Order.Orders", null)
                         .WithMany("Lines")
                         .HasForeignKey("OrdersId");
+                });
+
+            modelBuilder.Entity("MusicHub.Models.Song", b =>
+                {
+                    b.HasOne("MusicHub.Models.Album", "Name")
+                        .WithMany()
+                        .HasForeignKey("NameId");
                 });
 #pragma warning restore 612, 618
         }

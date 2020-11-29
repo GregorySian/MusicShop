@@ -51,22 +51,5 @@ namespace MusicHub.Controllers
 
             return RedirectToAction("Index", new{ returnUrl});
         }
-
-
-        //private Cart GetCart()
-        //{
-        //    Cart cart = HttpContext.Session.GetJson<Cart>("Cart") ?? new Cart();
-        //    return cart;
-        //}
-
-        //private void SaveCart(Cart cart)
-        //{
-        //    HttpContext.Session.SetJson("Cart", cart);
-        //}
-
-        //public ViewResult CheckOut()
-        //{
-        //    return View();
-        //}
     }
 }

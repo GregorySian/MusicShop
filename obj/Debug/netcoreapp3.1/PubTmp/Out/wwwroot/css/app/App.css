@@ -24,12 +24,15 @@
 }
 
 .Album-Title {
-    font-size:0.8em;
+    font-size: 0.8em;
     padding-bottom: 2px;
     margin: auto;
     text-align: center;
 }
-   
+
+.Album-Title a {
+    text-decoration: none
+}
 
     .Album-Title a:hover {
         border-bottom: 2px solid #cf6d17;
