@@ -216,3 +216,5 @@ C:\Users\Gregory\source\repos\MusicShop\MusicHub\obj\Debug\netcoreapp3.1\scopedc
 C:\Users\Gregory\source\repos\MusicShop\MusicHub\obj\Debug\netcoreapp3.1\Razor\Views\Product\FilterByGenre.cshtml.g.cs
 C:\Users\Gregory\source\repos\MusicShop\MusicHub\bin\Debug\netcoreapp3.1\Enums.NET.dll
 C:\Users\Gregory\source\repos\MusicShop\MusicHub\obj\Debug\netcoreapp3.1\Razor\Views\Account\Register.cshtml.g.cs
+C:\Users\Gregory\Source\Repos\GregorySian\MusicShop\obj\Debug\netcoreapp3.1\MusicHub.dll
+C:\Users\Gregory\Source\Repos\GregorySian\MusicShop\obj\Debug\netcoreapp3.1\MusicHub.pdb
